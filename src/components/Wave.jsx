@@ -10,8 +10,8 @@ const Wave = () => {
 
   return (
     <mesh>
-      <planeBufferGeometry args={[3, 5]} />
-      <customShaderMaterial uColor="blue" ref={materialRef} />
+      <planeBufferGeometry args={[0.4, 0.6, 16, 16]} />
+      <customShaderMaterial uColor="blue" ref={materialRef} wireframe />
     </mesh>
   );
 };
