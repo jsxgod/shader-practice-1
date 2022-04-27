@@ -8,7 +8,9 @@ const CustomShaderMaterial = shaderMaterial(
 
   //Vertex Shader
   glsl`
+    varying vec2 vUv;
     void main () {
+      vUv = uv;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
   `,
@@ -16,8 +18,9 @@ const CustomShaderMaterial = shaderMaterial(
   //Fragment Shader
   glsl`
     uniform vec3 uColor;
+    varying vec2 vUv;
     void main () {
-      gl_FragColor = vec4(uColor, 1.0);
+      gl_FragColor = vec4(vUv.x + uColor, 1.0);
     }
   `
 );
