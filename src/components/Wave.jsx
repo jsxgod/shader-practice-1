@@ -1,7 +1,7 @@
 import { useFrame, useLoader } from "@react-three/fiber";
 import React, { useRef } from "react";
 import * as THREE from "three";
-import textureImage from "../art-01.jpg";
+import textureImage from "../images/splash.jpg";
 
 const Wave = () => {
   const materialRef = useRef();
