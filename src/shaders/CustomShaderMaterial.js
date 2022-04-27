@@ -4,11 +4,12 @@ import * as THREE from "three";
 
 const CustomShaderMaterial = shaderMaterial(
   // Uniforms
-  { uColor: new THREE.Color(0.0, 0.0, 0.0) },
+  { uTime: 0, uColor: new THREE.Color(0.0, 0.0, 0.0) },
 
   //Vertex Shader
   glsl`
     varying vec2 vUv;
+
     void main () {
       vUv = uv;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
@@ -17,10 +18,13 @@ const CustomShaderMaterial = shaderMaterial(
 
   //Fragment Shader
   glsl`
+    precision mediump float;
     uniform vec3 uColor;
     varying vec2 vUv;
+    uniform float uTime;
+
     void main () {
-      gl_FragColor = vec4(vUv.x + uColor, 1.0);
+      gl_FragColor = vec4(sin(vUv.x + uTime) + uColor, 1.0);
     }
   `
 );
